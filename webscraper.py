@@ -10,10 +10,7 @@ from datetime import timedelta #j
 
 global phone
 global tPhone
-global accountSID
-global authToken
-global phoneNumber
-global twilioPhone
+
 global client
 global message
 global messageReceived
@@ -104,12 +101,16 @@ def output():
     #"The percent difference in stock since " + %s + " is " + %d + "%" % (time_previous, percent_difference) #first %s is time previous second is percent difference
 
 def main():
+	global accountSID
+	global authToken
+	global phoneNumber
+	global twilioPhone
+	
 	accountSID = input("Account SID: ") #b
-
 	authToken = input("Authorization Token: ") #b
-
 	phoneNumber = input("Phone Number: ") #b
 	twilioPhone = input("Twilio Number: ")
+	
 	while (len(phoneNumber) != 10 or not phoneNumber.isdigit()):
   		print("Phone number should be 10 numbers")
   		phoneNumber = input("Phone Number: ") #b
