@@ -82,10 +82,6 @@ def output():
 	#import timedelta #j
 	# percentDifference = 5
 	# timePrevious = "15:30"
-	accountSID = 'ACf2d091f5a3bd4c146a6c521f57b06544'
-	authToken = '793e80c72afe2ecc433b6cedf96acd92'
-	phoneNumber = '5035758826'
-	twilioPhone = '2039418628'
 	client = Client(accountSID,authToken)
 	message = client.messages.create(
     	to = phoneNumber,
