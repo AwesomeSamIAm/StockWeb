@@ -52,21 +52,25 @@ def magic():
 
 	# Beautiful soup scrape stock ticker price
 	soup = BeautifulSoup(browser.page_source, "html.parser")
-	currentValue = soup.find("span", class_="symbol-page-header__pricing-price").text
+	global timePrevious
+	timePrevious = soup.find("span", class_="symbol-page-header__pricing-price").text
+	#timePrevious = float(tempTimePrevious[1:])
 
 	# Beautiful soup scrape stock ticker price
-# 	sleep(15)
-# 	soup = BeautifulSoup(browser.page_source, "html.parser")
-# 	currentValue = soup.find("span", class_="symbol-page-header__pricing-price").text #Change current value
-# 	#while currentvalue is within range, wait X seconds then run code again to get the new value,
-# 	#if its out of range, what do we print?
-# 	while (olderValue-5 <= currentValue <= olderValue+5) == True:
-#  	  sleep(15)
-#  	  soup = BeautifulSoup(browser.page_source, "html.parser")
-#   	  currentValue = soup.find("span", class_="symbol-page-header__pricing-price").text #Change current value
-# 	else:
-#    	 return(currentValue)#did we want something else?
-#    	 break
+	# sleep(5)
+	soup = BeautifulSoup(browser.page_source, "html.parser")
+	global currentValue
+	currentValue = soup.find("span", class_="symbol-page-header__pricing-price").text #Change current value
+	# currentValue = float(tempCurrentValue[1:])
+	# #while currentvalue is within range, wait X seconds then run code again to get the new value,
+	# #if its out of range, what do we print?
+	
+	# while (((timePrevious - 5) <= currentValue) and (currentValue <= (timePrevious + 5))):
+	# 	sleep(5)
+	# 	soup = BeautifulSoup(browser.page_source, "html.parser")
+	# 	currentValue = soup.find("span", class_="symbol-page-header__pricing-price").text #Change current value
+	# else:
+   	#  	return(currentValue)#did we want something else?
 
 
 	# print(currentValue) #E
@@ -75,28 +79,31 @@ def magic():
 
 def output():
 	import requests #E
-	from time import sleep #E
-	from datetime import time #j
-	from datetime import date #j
-	import timedelta #j
-	percentDifference = 5
-	timePrevious = "15:30"
-
+	# from time import sleep #E
+	# from datetime import time #j
+	# from datetime import date #j
+	#import timedelta #j
+	# percentDifference = 5
+	# timePrevious = "15:30"
+	accountSID = 'ACf2d091f5a3bd4c146a6c521f57b06544'
+	authToken = '793e80c72afe2ecc433b6cedf96acd92'
+	phoneNumber = '5035758826'
+	twilioPhone = '2039418628'
+	client = Client(accountSID,authToken)
 	message = client.messages.create(
     	to = phoneNumber,
     	from_= twilioPhone,
     	#body = "The percent difference in stock since " + %s + " is " + %d + "%" % (time_previous, percent_difference)
-    	body = "tepitytest" #first %s is time previous second is percent difference
+    	body = "tepitytest" + currentValue #first %s is time previous second is percent difference
 	)
-	if (percentDifference >= 5):
-		print(message.sid)
-	time.sleep(120)
-	magic()
+	# if (percentDifference >= 5):
+	# 	print(message.sid)
+	# time.sleep(120)
+	# magic()
 
     #"The percent difference in stock since " + %s + " is " + %d + "%" % (time_previous, percent_difference) #first %s is time previous second is percent difference
 
 def main():
-  
 	accountSID = input("Account SID: ") #b
 
 	authToken = input("Authorization Token: ") #b
