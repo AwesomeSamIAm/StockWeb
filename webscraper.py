@@ -10,8 +10,6 @@ from datetime import timedelta #j
 
 global phone
 global tPhone
-
-global client
 global message
 global messageReceived
 global options
@@ -82,12 +80,11 @@ def output():
 	#import timedelta #j
 	# percentDifference = 5
 	# timePrevious = "15:30"
-	client = Client(accountSID,authToken)
 	message = client.messages.create(
     	to = phoneNumber,
     	from_= twilioPhone,
     	#body = "The percent difference in stock since " + %s + " is " + %d + "%" % (time_previous, percent_difference)
-    	body = "tepitytest" + currentValue #first %s is time previous second is percent difference
+    	body = "Tesla stock price was previously " + timePrevious + ". Now it is" + currentValue #first %s is time previous second is percent difference
 	)
 	# if (percentDifference >= 5):
 	# 	print(message.sid)
@@ -121,7 +118,8 @@ def main():
 		Phone = 1 #j
 	else:
 		Phone = 0 #j
-
+		
+	global client
 	client = Client(accountSID,authToken) #j
 	message = client.messages.create( #j
   		to = phoneNumber, #j
