@@ -20,7 +20,7 @@ global browser
 global soup
 global currentValue
 global percentDifference
-global timePrevious
+
 
 
 def magic():
@@ -54,7 +54,7 @@ def magic():
 	#timePrevious = float(tempTimePrevious[1:])
 
 	# Beautiful soup scrape stock ticker price
-	# sleep(5)
+	sleep(15)
 	soup = BeautifulSoup(browser.page_source, "html.parser")
 	global currentValue
 	currentValue = soup.find("span", class_="symbol-page-header__pricing-price").text #Change current value
@@ -63,7 +63,7 @@ def magic():
 	# #if its out of range, what do we print?
 	
 	# while (((timePrevious - 5) <= currentValue) and (currentValue <= (timePrevious + 5))):
-	# 	sleep(5)
+	# 	sleep(15)
 	# 	soup = BeautifulSoup(browser.page_source, "html.parser")
 	# 	currentValue = soup.find("span", class_="symbol-page-header__pricing-price").text #Change current value
 	# else:
@@ -91,7 +91,7 @@ def output():
 	)
 	# if (percentDifference >= 5):
 	# 	print(message.sid)
-	# time.sleep(120)
+	# time.sleep(15)
 	# magic()
 
     #"The percent difference in stock since " + %s + " is " + %d + "%" % (time_previous, percent_difference) #first %s is time previous second is percent difference
