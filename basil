@@ -22,8 +22,6 @@
   		print("Twilio number should be 10 numbers")
   		twilioPhone = input("Twilio Number: ") #b
 
-#direct twilio code was written by jackson
-
 	messageReceived = input("Fear leads to anger. Anger leads to hate. Did you receive this message?('yes' or 'no')") #b
   
   #Based on whether they received the message or not, the ask() function tests if they received the text and redirects the user based on that
