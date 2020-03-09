@@ -1,2 +1,37 @@
 
-I wrote most of the input code, wrote sections of both the output and magichappens parts, and managed the structure of our code
+#I wrote most of the input code, wrote sections of both the output and magichappens parts, and managed the structure of our code
+#Annotated input code which I wrote:
+
+  #Twilio variables definition
+  global accountSID
+	global authToken
+	global phoneNumber
+	global twilioPhone
+	
+  #use of python input() functions
+	accountSID = input("Account SID: ") #b
+	authToken = input("Authorization Token: ") #b
+	phoneNumber = input("Phone Number: ") #b
+	twilioPhone = input("Twilio Number: ")
+	
+  #This loop makes sure that all phone number inputs are valid
+	while (len(phoneNumber) != 10 or not phoneNumber.isdigit()):
+  		print("Phone number should be 10 numbers")
+  		phoneNumber = input("Phone Number: ") #b
+	while (len(twilioPhone) != 10 or not twilioPhone.isdigit()):
+  		print("Twilio number should be 10 numbers")
+  		twilioPhone = input("Twilio Number: ") #b
+
+#direct twilio code was written by jackson
+
+	messageReceived = input("Fear leads to anger. Anger leads to hate. Did you receive this message?('yes' or 'no')") #b
+  
+  #Based on whether they received the message or not, the ask() function tests if they received the text and redirects the user based on that
+	def ask(): #b
+  		if (messageReceived == "yes"): #b
+  			print("Thanks for using the sytem.") #b
+  		elif (messageReceived == "no"): #b
+  			main() #b
+  		else: #b
+  			ask() #b
+	magic()
